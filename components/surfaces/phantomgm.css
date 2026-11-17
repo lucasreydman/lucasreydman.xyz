@@ -1,0 +1,158 @@
+/*
+  PhantomGM surfaces. Everything here is copied from fbi-basketball's
+  app/phantomgm/pgm.css and resized to design pixels (--px): the tokens the
+  shared brand scope does not carry, the display face, the gradients and
+  shadows that are too long for a utility, and the two moving details.
+
+  These rules are unlayered, so they win over utilities on the same element.
+  None of them sets a size, a colour or a spacing that a utility also sets.
+*/
+
+/* pgm.css ".pgm :where(h1, h2, h3, h4)": Archivo, widened */
+.pgm-d {
+  font-family: var(--display);
+  font-stretch: 112%;
+  font-weight: 800;
+  letter-spacing: -0.018em;
+  line-height: 1.08;
+}
+
+/* pgm.css ".pgm-num", ".pgm-bigpct", ".pgm-stat-num" */
+.pgm-n {
+  font-family: var(--display);
+  font-stretch: 104%;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.025em;
+}
+
+/* pgm.css ".pgm-catrow-label", ".pgm-slot-pos", ".pgm-move-to" */
+.pgm-tag {
+  font-family: var(--display);
+  font-stretch: 108%;
+  font-weight: 700;
+}
+
+/* pgm.css ".pgm-frame" */
+.pgm-frame-bg {
+  background:
+    radial-gradient(calc(var(--px) * 900) calc(var(--px) * 340) at 50% calc(var(--px) * -180), rgba(162, 152, 231, 0.045), transparent 70%),
+    #0a0b0f;
+}
+
+/* The ground a phone sits on: the logo's Deep (#3d2f9e) falling to Ink. */
+.pgm-wall {
+  background:
+    radial-gradient(120% 70% at 50% 0%, rgba(61, 47, 158, 0.6), rgba(61, 47, 158, 0.16) 55%, transparent 100%),
+    #0a0b0f;
+}
+.pgm-wall-up {
+  background:
+    radial-gradient(120% 70% at 50% 100%, rgba(61, 47, 158, 0.6), rgba(61, 47, 158, 0.16) 55%, transparent 100%),
+    #0a0b0f;
+}
+
+/* pgm.css ".pgm-hero" */
+.pgm-hero {
+  background:
+    radial-gradient(calc(var(--px) * 520) calc(var(--px) * 220) at 100% 0%, rgba(162, 152, 231, 0.09), transparent 70%),
+    linear-gradient(180deg, #12141c, #0e1017);
+}
+
+/* pgm.css ".pgm-ph" */
+.pgm-ph {
+  background: linear-gradient(180deg, #1a1e2a, #12151d);
+}
+/* A headshot fills its disc: ESPN's picture is a head and shoulders on a
+   transparent ground, so it is enlarged from the top until the head runs
+   from the rim to the chin, over a lighter fill than the card. */
+span.pgm-ph:has(img) {
+  background: linear-gradient(180deg, #2b3145, #1a1e2b);
+}
+.pgm-ph img {
+  transform: scale(1.3);
+  transform-origin: 50% 8%;
+}
+.pgm-ph-dim img {
+  filter: grayscale(0.85) brightness(0.7);
+}
+.pgm-ph-ring {
+  box-shadow: 0 0 0 calc(var(--px) * 2) rgba(162, 152, 231, 0.15);
+}
+.pgm-ph-stack {
+  box-shadow: 0 0 0 calc(var(--px) * 2) #101219;
+}
+
+/* pgm.css ".pgm-tab-run" and the active tab's icon */
+.pgm-run {
+  box-shadow:
+    0 0 0 calc(var(--px) * 5) #0a0b0f,
+    0 calc(var(--px) * 8) calc(var(--px) * 26) rgba(162, 152, 231, 0.28);
+}
+.pgm-tab-on svg {
+  filter: drop-shadow(0 0 calc(var(--px) * 8) rgba(162, 152, 231, 0.42));
+}
+
+/* pgm.css ".pgm-switch::after" */
+.pgm-knob {
+  box-shadow: 0 calc(var(--px) * 2) calc(var(--px) * 6) rgba(0, 0, 0, 0.4);
+}
+
+/* pgm.css ".pgm-hero-ring .fill" */
+.pgm-ring-fill {
+  filter: drop-shadow(0 0 calc(var(--px) * 6) rgba(162, 152, 231, 0.42));
+}
+
+/* pgm.css ".pgm-slot[data-changed='true']" */
+.pgm-slot-changed {
+  background: linear-gradient(90deg, rgba(162, 152, 231, 0.06), transparent 55%);
+}
+
+/* The app icon as an object: the ink tile from brand-kit/phantomgm/app-icon,
+   lit from above, on a bloom of the logo's Drape. */
+.pgm-icon-ground {
+  background:
+    radial-gradient(60% 55% at 50% 44%, rgba(115, 103, 197, 0.34), rgba(61, 47, 158, 0.12) 55%, transparent 100%),
+    #07080b;
+}
+.pgm-icon-tile {
+  background:
+    radial-gradient(90% 70% at 50% 0%, rgba(162, 152, 231, 0.1), transparent 70%),
+    linear-gradient(180deg, #11131b, #0a0b0f 60%);
+  box-shadow:
+    inset 0 calc(var(--px) * 1) 0 rgba(238, 240, 246, 0.14),
+    inset 0 0 0 calc(var(--px) * 1) rgba(238, 240, 246, 0.05),
+    0 calc(var(--px) * 2) calc(var(--px) * 4) rgba(0, 0, 0, 0.5),
+    0 calc(var(--px) * 28) calc(var(--px) * 56) rgba(0, 0, 0, 0.6),
+    0 0 calc(var(--px) * 90) rgba(115, 103, 197, 0.22);
+}
+.pgm-icon-logo {
+  filter: drop-shadow(0 calc(var(--px) * 10) calc(var(--px) * 16) rgba(0, 0, 0, 0.45));
+}
+
+/* The league screen scrolls from the matchup to the lineup while the tile is hovered. */
+.pgm-scroll {
+  transition: transform 1400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.group\/tile:hover .pgm-scroll,
+[data-pgm-scrolled] .pgm-scroll {
+  transform: translateY(calc(var(--px) * -544));
+}
+[data-pgm-scrolled] .pgm-scroll {
+  transition: none;
+}
+
+/* The schedule's "now" marker: pgm.css ".pgm-sched-now", with its halo breathing. */
+.pgm-now {
+  box-shadow: 0 0 0 calc(var(--px) * 3) rgba(243, 245, 250, 0.12);
+  animation: phantomgm-now 3.6s ease-in-out infinite;
+}
+@keyframes phantomgm-now {
+  0%,
+  100% {
+    box-shadow: 0 0 0 calc(var(--px) * 3) rgba(243, 245, 250, 0.12);
+  }
+  50% {
+    box-shadow: 0 0 0 calc(var(--px) * 6) rgba(243, 245, 250, 0.04);
+  }
+}

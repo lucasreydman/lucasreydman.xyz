@@ -1,0 +1,55 @@
+/*
+  GLUE Index surfaces. Each rule is the scaled form of one in glue-index's
+  app/globals.css, named beside it.
+*/
+
+/* .lead-name mark, .acronym b: the highlighter, drawn across the lower half of the line. */
+.glue-hl {
+  background: linear-gradient(transparent 56%, #f4c430 56% 92%, transparent 92%);
+}
+
+.glue-hl-pad {
+  padding: 0 calc(var(--px) * 4);
+  margin: 0 calc(var(--px) * -4);
+}
+
+/* .ledger-total: the double rule that closes a column of figures. */
+.glue-total {
+  border-top: calc(var(--px) * 3) double var(--ink);
+}
+
+/* .bar-open: a season still in progress is hatched, not filled. */
+.glue-bar-open {
+  background: repeating-linear-gradient(
+    135deg,
+    var(--accent) 0 calc(var(--px) * 2),
+    transparent calc(var(--px) * 2) calc(var(--px) * 5)
+  );
+  outline: calc(var(--px) * 1) solid var(--accent);
+  outline-offset: calc(var(--px) * -1);
+}
+
+/* .board: rank, player, team, GP, Min, GLUE, strip, seven credits, seven debits (usage is the wide one). */
+.glue-board {
+  display: grid;
+  align-items: center;
+  grid-template-columns:
+    calc(var(--px) * 38) minmax(0, 1fr) calc(var(--px) * 42) calc(var(--px) * 34) calc(var(--px) * 50)
+    calc(var(--px) * 58) calc(var(--px) * 92)
+    calc(var(--px) * 36) repeat(6, calc(var(--px) * 30))
+    calc(var(--px) * 36) calc(var(--px) * 40) repeat(5, calc(var(--px) * 30));
+}
+
+/* .board-careers, as the value table uses it: rank, player, team, Min, GLUE, strip, Overall, Salary, AAV, GLUE per $1M. */
+.glue-value {
+  display: grid;
+  align-items: center;
+  grid-template-columns:
+    calc(var(--px) * 48) minmax(0, 1fr) calc(var(--px) * 56) calc(var(--px) * 60) calc(var(--px) * 76)
+    calc(var(--px) * 116) calc(var(--px) * 84) calc(var(--px) * 88) calc(var(--px) * 88) calc(var(--px) * 136);
+}
+
+/* .equation math */
+.glue-math math {
+  font-family: "Cambria Math", "STIX Two Math", math, serif;
+}

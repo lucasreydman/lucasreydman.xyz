@@ -1,0 +1,26 @@
+/*
+  Hitlist sets its figures in Tailwind's default mono stack and its formulas
+  in a serif math stack (hitlist: app/components/Formula.tsx,
+  MATH_FONT_STACK). Both are system faces in the real app, so they are here.
+*/
+.b-hitlist .bvp-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.b-hitlist .bvp-math {
+  font-family: "Cambria Math", "STIX Two Text", "Times New Roman", serif;
+}
+
+/* hitlist: app/components/TopPlays.tsx, the scoring logic panel. */
+.b-hitlist .bvp-panel {
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), transparent 28%),
+    radial-gradient(circle at top right, rgba(34, 197, 94, 0.1), transparent 24%),
+    linear-gradient(180deg, rgba(2, 6, 23, 0.98), rgba(3, 10, 28, 0.94));
+}
+
+/* hitlist: app/components/ScoringLogicContent.tsx, FormulaBlock. */
+.b-hitlist .bvp-block {
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.9), rgba(3, 10, 28, 0.72));
+  box-shadow: inset 0 1px 0 rgba(148, 163, 184, 0.06);
+}

@@ -1,0 +1,90 @@
+/*
+  SHARPRFI surfaces. Everything is sized from `--px`, one design pixel, which
+  the surface root sets (see the surfaces block in app/globals.css).
+*/
+
+/* The nine columns of the desktop table, in the proportions of the colgroup
+   in sharprfi's app/components/GameTable.tsx (212, 152, 152, 84, 164, 68, 80,
+   76, 92 of 1080), with the matchup and starter columns given a little of
+   the "Bet at" column so names fit at this width. */
+.srfi-cols {
+  display: grid;
+  grid-template-columns: 2.3fr 1.6fr 1.6fr 0.9fr 1.3fr 0.58fr 0.72fr 0.58fr 1fr;
+  align-items: center;
+}
+
+/* Formulas. The product typesets these with KaTeX; here they are plain markup
+   in a text serif, variables in italic and named subscripts upright. */
+.srfi-math {
+  font-family: "STIX Two Text", Cambria, "Times New Roman", Times, serif;
+  font-variant-numeric: lining-nums;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.srfi-math i {
+  font-style: italic;
+}
+.srfi-math sub,
+.srfi-math sup {
+  font-size: 0.8em;
+  line-height: 0;
+  font-style: normal;
+}
+.srfi-math sup sub {
+  font-size: 0.86em;
+}
+
+/* The calculator's sliders. A native range input, restyled so the track and
+   thumb scale with the surface. `--srfi-at` is the filled share, set inline. */
+.srfi-range {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: calc(var(--px) * 32);
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  touch-action: pan-y;
+}
+.srfi-range::-webkit-slider-runnable-track {
+  height: calc(var(--px) * 4);
+  border-radius: calc(var(--px) * 4);
+  background: linear-gradient(to right, var(--srfi-fill) 0 var(--srfi-at), #e2e8f0 var(--srfi-at) 100%);
+}
+.srfi-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  width: calc(var(--px) * 16);
+  height: calc(var(--px) * 16);
+  margin-top: calc(var(--px) * -6);
+  border: calc(var(--px) * 2) solid var(--srfi-fill);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 calc(var(--px) * 1) calc(var(--px) * 2) rgba(15, 23, 42, 0.18);
+}
+.srfi-range::-moz-range-track {
+  height: calc(var(--px) * 4);
+  border-radius: calc(var(--px) * 4);
+  background: #e2e8f0;
+}
+.srfi-range::-moz-range-progress {
+  height: calc(var(--px) * 4);
+  border-radius: calc(var(--px) * 4);
+  background: var(--srfi-fill);
+}
+.srfi-range::-moz-range-thumb {
+  box-sizing: border-box;
+  width: calc(var(--px) * 16);
+  height: calc(var(--px) * 16);
+  border: calc(var(--px) * 2) solid var(--srfi-fill);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 calc(var(--px) * 1) calc(var(--px) * 2) rgba(15, 23, 42, 0.18);
+}
+.srfi-range:focus-visible {
+  outline: calc(var(--px) * 2) solid #0f172a;
+  outline-offset: 0;
+  border-radius: calc(var(--px) * 6);
+}

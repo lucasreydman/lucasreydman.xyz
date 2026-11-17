@@ -1,0 +1,94 @@
+/*
+  Blakey Breakthrough: the status and label hues that the shared brand tokens
+  do not cover. Every value is copied from blakey-breakthrough-dashboard's
+  app/globals.css (the light theme block), name for name.
+*/
+.b-blakey {
+  --bb-primary-subtle: oklch(0.962 0.012 55);
+  --bb-accent-fg: oklch(0.5 0.14 43);
+
+  --bb-success: oklch(0.62 0.145 155);
+  --bb-success-bg: oklch(0.972 0.013 165);
+  --bb-warning: oklch(0.615 0.13 70);
+  --bb-warning-bg: oklch(0.978 0.02 90);
+  --bb-danger: oklch(0.53 0.19 25);
+  --bb-danger-bg: oklch(0.967 0.015 20);
+
+  --bb-orange: oklch(0.6 0.15 50);
+  --bb-orange-bg: oklch(0.975 0.018 60);
+  --bb-violet: oklch(0.51 0.19 295);
+  --bb-violet-bg: oklch(0.972 0.016 300);
+  --bb-rose: oklch(0.55 0.2 5);
+  --bb-rose-bg: oklch(0.97 0.016 10);
+  --bb-info: oklch(0.55 0.16 250);
+  --bb-info-bg: oklch(0.97 0.014 250);
+  --bb-teal: oklch(0.55 0.13 175);
+  --bb-teal-bg: oklch(0.965 0.02 175);
+
+  --bb-chart-1: oklch(0.49 0.19 285);
+  --bb-shadow-sm: 0 1px 2px rgba(28, 22, 15, 0.05);
+}
+
+/* components/ui/pill.tsx: one geometry, ten tones. */
+.bb-pill {
+  color: var(--t);
+  background: var(--t-bg);
+  border-color: color-mix(in oklab, var(--t) 30%, transparent);
+}
+
+.bb-pill[data-tone="neutral"] {
+  color: var(--muted);
+  background: var(--raised);
+  border-color: var(--line);
+}
+
+.bb-pill[data-tone="primary"] {
+  --t: var(--accent);
+  --t-bg: var(--bb-primary-subtle);
+  border-color: color-mix(in oklab, var(--accent) 25%, transparent);
+}
+
+.bb-pill[data-tone="success"] {
+  --t: var(--bb-success);
+  --t-bg: var(--bb-success-bg);
+}
+
+.bb-pill[data-tone="warning"] {
+  --t: var(--bb-warning);
+  --t-bg: var(--bb-warning-bg);
+}
+
+.bb-pill[data-tone="danger"] {
+  --t: var(--bb-danger);
+  --t-bg: var(--bb-danger-bg);
+}
+
+.bb-pill[data-tone="orange"] {
+  --t: var(--bb-orange);
+  --t-bg: var(--bb-orange-bg);
+}
+
+.bb-pill[data-tone="violet"] {
+  --t: var(--bb-violet);
+  --t-bg: var(--bb-violet-bg);
+}
+
+.bb-pill[data-tone="rose"] {
+  --t: var(--bb-rose);
+  --t-bg: var(--bb-rose-bg);
+}
+
+.bb-pill[data-tone="info"] {
+  --t: var(--bb-info);
+  --t-bg: var(--bb-info-bg);
+}
+
+.bb-pill[data-tone="teal"] {
+  --t: var(--bb-teal);
+  --t-bg: var(--bb-teal-bg);
+}
+
+/* components/today/BriefingHero.tsx: from-card to-primary-subtle/60. */
+.bb-hero {
+  background: linear-gradient(to bottom right, var(--card), color-mix(in oklab, var(--bb-primary-subtle) 60%, transparent));
+}

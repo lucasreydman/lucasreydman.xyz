@@ -1,0 +1,27 @@
+/* FBI Basketball surfaces: the one moving detail a screen has in the product. */
+
+/* The engine page's stage bars grow in from the left (fbi-basketball
+   app/styles/admin-insights.css, ins-grow). Here they replay when the tile is
+   hovered. */
+@keyframes fbi-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.fbi-stage-bar {
+  transform-origin: left center;
+}
+
+.group\/tile:hover .fbi-stage-bar {
+  animation: fbi-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .group\/tile:hover .fbi-stage-bar {
+    animation: none;
+  }
+}

@@ -1,0 +1,638 @@
+@import "tailwindcss";
+
+/*
+  The gallery (2026-11-11, a full restart).
+
+  The site is a wall of the things Lucas built, and each thing keeps its own
+  brand: its real logo, its own typeface, its own colours, lifted from that
+  project's repo. Around them the site has an identity of its own, built like
+  a team's: two colours and one accent. Midnight navy and ice are the pair;
+  signal yellow marks the one action or the one selected thing.
+
+  Two layers of tokens:
+    1. The chrome tokens below (`--ground` to `--accent`).
+    2. A brand scope per project (`.b-fbi`, `.b-tpdl`, ...) that redefines the
+       same tokens, so anything inside a scope picks up that project's brand
+       through the ordinary utility classes.
+*/
+
+@theme inline {
+  --color-ground: var(--ground);
+  --color-card: var(--card);
+  --color-raised: var(--raised);
+  --color-ink: var(--ink);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+
+  --font-display: var(--display);
+  --font-sans: var(--body);
+  --font-mono: var(--mono);
+
+  --color-border: var(--line);
+  --color-ring: var(--ink);
+}
+
+:root {
+  /* Midnight and ice, with one signal yellow. See AGENTS.md, "The site's own identity". */
+  --ground: #f1f3fb;
+  --card: #ffffff;
+  --raised: #e3e7f6;
+  --ink: #11163a;
+  --secondary: #3c4270;
+  --muted: #5c628c;
+  --line: rgba(17, 22, 58, 0.1);
+  --accent: #ffc928;
+  --accent-ink: #11163a;
+
+  --display: var(--font-zalando-expanded), var(--font-zalando), ui-sans-serif, system-ui, sans-serif;
+  --body: var(--font-zalando), ui-sans-serif, system-ui, sans-serif;
+  --mono: var(--font-martian-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: light;
+}
+
+/* The site's own dark band: the same two colours, turned over. */
+.midnight {
+  --ground: #11163a;
+  --card: #191f4a;
+  --raised: #222958;
+  --ink: #f1f3fb;
+  --secondary: #c9cdea;
+  --muted: #9aa0cc;
+  --line: rgba(241, 243, 251, 0.14);
+  background-color: var(--ground);
+  color: var(--ink);
+  color-scheme: dark;
+}
+
+/* ─── brand scopes ──────────────────────────────────────────────────────────
+   Every value here is copied from the project's own stylesheet. The source
+   file is named beside each one. */
+
+/* fbi-basketball: app/globals.css (obsidian, bone, gold; Norwester, Geist) */
+.b-fbi {
+  --ground: #0a0a0b;
+  --card: #141416;
+  --raised: #1f1f23;
+  --ink: #f5f1e8;
+  --secondary: #d9d4c7;
+  --muted: #8a8680;
+  --line: #2a2a30;
+  --accent: #c9a961;
+  --accent-ink: #0a0a0b;
+  --display: var(--font-norwester), "Impact", sans-serif;
+  --body: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+
+/* glue-index: app/globals.css (paper, ink, credit green, debit red, mark yellow; Sofia Sans, Sometype Mono) */
+.b-glue {
+  --ground: #eef1ea;
+  --card: #f8faf5;
+  --raised: #e3e8dc;
+  --ink: #14201b;
+  --secondary: #45544c;
+  --muted: #5c6a61;
+  --line: rgb(20 32 27 / 0.1);
+  --accent: #1b5e4b;
+  --accent-ink: #eef1ea;
+  --display: var(--font-sofia-condensed), "Impact", sans-serif;
+  --body: var(--font-sofia-sans), ui-sans-serif, system-ui, sans-serif;
+  --mono: var(--font-sometype-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+
+/* fbi-basketball: app/phantomgm/pgm.css (ink, bone, glow; Archivo, Geist) */
+.b-phantomgm {
+  --ground: #0a0b0f;
+  --card: #101219;
+  --raised: #161923;
+  --ink: #eef0f6;
+  --secondary: #c5cad8;
+  --muted: #8d95ab;
+  --line: #232838;
+  --accent: #a298e7;
+  --accent-ink: #0b0a14;
+  --display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --body: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+
+/* tpdl: src/app/globals.css (Barlow Condensed, Barlow) */
+.b-tpdl {
+  --ground: #0a0e12;
+  --card: #141b22;
+  --raised: #1b242d;
+  --ink: #f3f7fa;
+  --secondary: #c3ced8;
+  --muted: #93a2b0;
+  --line: #243039;
+  --accent: #22e58a;
+  --accent-ink: #04130b;
+  --display: var(--font-barlow-condensed), var(--font-barlow), sans-serif;
+  --body: var(--font-barlow), ui-sans-serif, system-ui, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+
+/* fandex: src/app/globals.css, light theme (paper, ink, one red; Archivo, IBM Plex Mono) */
+.b-fandex {
+  --ground: #f6f5f2;
+  --card: #fdfcfa;
+  --raised: #eeece7;
+  --ink: #1b1a17;
+  --secondary: #57534c;
+  --muted: #757067;
+  --line: rgb(27 26 23 / 0.1);
+  --accent: #c8361d;
+  --accent-ink: #ffffff;
+  --display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --body: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --mono: var(--font-plex-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+
+/* playcaller: src/app/globals.css (Big Shoulders, Instrument Sans) */
+.b-playcaller {
+  --ground: #0b0c0e;
+  --card: #141619;
+  --raised: #1b1e22;
+  --ink: #f4f1ea;
+  --secondary: #cdc8bc;
+  --muted: #8e8a81;
+  --line: #24282e;
+  --accent: #ff5b14;
+  --accent-ink: #1d0900;
+  --display: var(--font-big-shoulders), "Impact", sans-serif;
+  --body: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+
+/* fantasy-lineup-lab: src/index.css (Poppins) */
+.b-lineup-lab {
+  --ground: #10131c;
+  --card: #181c28;
+  --raised: #1f2433;
+  --ink: #f2f4fa;
+  --secondary: #c4cadb;
+  --muted: #8a93a8;
+  --line: #2b3245;
+  --accent: #00ceb8;
+  --accent-ink: #04201c;
+  --display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --body: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+
+/* sharprfi: app/ (white, Tailwind slate, green-600 wordmark; Geist) */
+.b-sharprfi {
+  --ground: #ffffff;
+  --card: #f8fafc;
+  --raised: #f1f5f9;
+  --ink: #0f172a;
+  --secondary: #475569;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --accent: #16a34a;
+  --accent-ink: #ffffff;
+  --display: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --body: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+
+/* Hitlist: app/ (gray-950, sky to green bar; Inter) */
+.b-hitlist {
+  --ground: #030712;
+  --card: #0b1220;
+  --raised: #111827;
+  --ink: #f8fafc;
+  --secondary: #cbd5e1;
+  --muted: #94a3b8;
+  --line: #1f2937;
+  --accent: #0ea5e9;
+  --accent-ink: #03121c;
+  --display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+
+/* blakey-breakthrough-dashboard: app/globals.css (warm white, brand orange; DM Sans) */
+.b-blakey {
+  --ground: #faf8f5;
+  --card: #ffffff;
+  --raised: #f4f1ec;
+  --ink: #1f1b16;
+  --secondary: #4a443b;
+  --muted: #766e62;
+  --line: #e8e3db;
+  --accent: #e86c2c;
+  --accent-ink: #ffffff;
+  --display: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --body: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+
+.brand {
+  color: var(--ink);
+  font-family: var(--body);
+}
+
+/* ─── surfaces ──────────────────────────────────────────────────────────────
+   A surface is a product screen rebuilt as live markup. It is drawn at a fixed
+   design width and scales with the box it sits in, so the same screen is a
+   small tile on the wall and a large figure on the project page.
+
+   `.sf` is the box. `.sf-root` sets `--px` to one design pixel, measured in
+   container units, and points Tailwind's spacing scale at it. Inside a surface
+   `p-4` is 16 design pixels, `t-13` is 13 design pixels of type, and `r-8` is
+   an 8 design pixel radius. Never use rem or px sizes inside one. */
+
+.sf {
+  container-type: inline-size;
+  width: 100%;
+}
+
+.sf-root {
+  --px: calc(100cqw / var(--w));
+  --spacing: calc(var(--px) * 4);
+  font-size: calc(var(--px) * 14);
+  line-height: 1.4;
+  width: 100%;
+  overflow: hidden;
+}
+
+@utility t-* {
+  font-size: calc(var(--px) * --value(number));
+}
+
+@utility r-* {
+  border-radius: calc(var(--px) * --value(number));
+}
+
+@utility bw-* {
+  border-width: calc(var(--px) * --value(number));
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    background-color: var(--ground);
+    font-family: var(--body);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--ground);
+    color: var(--ink);
+  }
+
+  table,
+  time,
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  a,
+  button {
+    transition: color 150ms var(--ease), background-color 150ms var(--ease), border-color 150ms var(--ease),
+      opacity 150ms var(--ease);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--ink);
+    color: var(--ground);
+  }
+
+  [id] {
+    scroll-margin-top: 72px;
+  }
+}
+
+/* ─── shots ─────────────────────────────────────────────────────────────────
+   The motion of the page, taken from how good motion pieces are built:
+
+   - Type rises out of a mask line, word by word. It is not faded in.
+   - Things arrive on a spring with a small settle, never a bounce.
+   - A screen enters already moving and comes to rest; nothing sits and waits.
+   - One accent, one idea per shot, and nothing loops.
+
+   `.w` is one masked word (see `components/motion/words.tsx`). `.rise` is a
+   block that comes up into place. Both rest in their finished position and
+   only start from below once their shot has been armed by script
+   (`[data-armed]`), so the page is whole without it. */
+
+:root {
+  --spring: linear(
+    0, 0.006, 0.025 2.8%, 0.101 6.1%, 0.539 18.9%, 0.721 25.3%, 0.849 31.5%, 0.937 38.1%, 0.968 41.8%, 0.991 45.7%,
+    1.006 50.1%, 1.015 55%, 1.017 63.9%, 1.001 85.9%, 1
+  );
+}
+
+.w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+}
+
+.w > span {
+  display: inline-block;
+}
+
+[data-armed] .w > span {
+  transition: transform 900ms var(--spring);
+  transition-delay: calc(var(--i, 0) * 32ms);
+}
+
+[data-armed]:not([data-in]) .w > span {
+  transform: translateY(112%);
+}
+
+[data-armed] .rise {
+  transition: transform 1000ms var(--spring), opacity 240ms linear;
+  transition-delay: calc(var(--d, 0) * 1ms);
+}
+
+[data-armed]:not([data-in]) .rise {
+  transform: translateY(56px);
+  opacity: 0;
+}
+
+/* The opening shot does not wait for script: its words come up as the page loads. */
+@keyframes word-rise {
+  from {
+    transform: translateY(112%);
+  }
+}
+
+@keyframes block-rise {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0);
+  }
+}
+
+.opening .w > span {
+  animation: word-rise 1000ms var(--spring) both;
+  animation-delay: calc(var(--i, 0) * 45ms + 120ms);
+}
+
+.opening .rise {
+  animation: block-rise 1000ms var(--spring) both;
+  animation-delay: calc(var(--d, 0) * 1ms);
+}
+
+.opening .pop {
+  animation: pop 700ms var(--spring) both;
+  animation-delay: calc(var(--d, 0) * 1ms);
+}
+
+/* ─── controls ──────────────────────────────────────────────────────────────
+   What a button, a screen and a row do under a pointer and under a press.
+   Same rules as the shots: a spring with a small settle, one move per
+   control, nothing that loops, no glow.
+
+   `.btn` is any button-shaped link. Pressing pushes it in fast and letting go
+   returns it on the spring. `.btn-line` is the outlined kind: its fill comes
+   up from the bottom edge and the label turns over to the ground colour.
+   `.arrow` is the glyph in `components/site/arrow.tsx`. `.lift` is a screen
+   that is a link: it comes up toward the pointer and goes down under a press.
+
+   Uses `scale` and `translate`, not `transform`, so none of this fights the
+   `.rise` transform a control may be sitting inside. */
+
+.btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  gap: 0.5rem;
+  transition: scale 520ms var(--spring), color 240ms var(--ease), background-color 240ms var(--ease),
+    border-color 240ms var(--ease), filter 240ms var(--ease);
+}
+
+.btn:active {
+  scale: 0.96;
+  transition-duration: 90ms, 240ms, 240ms, 240ms, 240ms;
+}
+
+.btn-line::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--ink);
+  translate: 0 101%;
+  transition: translate 420ms var(--ease);
+}
+
+.arrow {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+}
+
+.arrow > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: translate 520ms var(--spring);
+}
+
+.arrow-out {
+  --ax: 110%;
+  --ay: -110%;
+}
+.arrow-go {
+  --ax: 110%;
+  --ay: 0%;
+}
+.arrow-down {
+  --ax: 0%;
+  --ay: 110%;
+}
+
+.arrow > svg:last-child {
+  translate: calc(var(--ax) * -1) calc(var(--ay) * -1);
+}
+
+.lift {
+  transition: translate 620ms var(--spring), scale 520ms var(--spring), box-shadow 320ms var(--ease);
+}
+
+.lift:active {
+  scale: 0.985;
+  transition-duration: 620ms, 90ms, 320ms;
+}
+
+/* A row that is a link: its arrow waits just off its place and comes in. */
+.row-arrow {
+  opacity: 0;
+  translate: -6px 0;
+  transition: translate 520ms var(--spring), opacity 180ms linear;
+}
+
+@media (hover: hover) {
+  .btn-line:hover {
+    color: var(--ground);
+    border-color: var(--ink);
+  }
+  .btn-line:hover::before {
+    translate: 0 0;
+  }
+  :is(a, button):hover .arrow > svg:first-child {
+    translate: var(--ax) var(--ay);
+  }
+  :is(a, button):hover .arrow > svg:last-child {
+    translate: 0 0;
+  }
+  .lift:hover {
+    translate: 0 -6px;
+  }
+  a:hover .row-arrow {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* Keyboard focus gets the same answer as a pointer. */
+.btn-line:focus-visible {
+  color: var(--ground);
+}
+.btn-line:focus-visible::before {
+  translate: 0 0;
+}
+:is(a, button):focus-visible .arrow > svg:first-child {
+  translate: var(--ax) var(--ay);
+}
+:is(a, button):focus-visible .arrow > svg:last-child {
+  translate: 0 0;
+}
+a:focus-visible .row-arrow {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* ─── from a shot to its page ───────────────────────────────────────────────
+   A project's wordmark is one object on the home page and on its own page
+   (`ViewTransition` in `project-shot.tsx`, `fbi-chapter.tsx` and the project
+   page). On a click it travels from the panel to the top of the page while
+   the rest changes under it, so the reader sees which thing they opened. */
+
+::view-transition-group(*) {
+  animation-duration: 560ms;
+  animation-timing-function: var(--ease);
+}
+
+::view-transition-old(root) {
+  animation-duration: 180ms;
+}
+
+::view-transition-new(root) {
+  animation-duration: 320ms;
+  animation-delay: 80ms;
+}
+
+/* ─── hero portrait ─────────────────────────────────────────────────────────
+   `components/site/hero-figure.tsx` draws the portrait as dots and then lets
+   the photograph through, all from script. These rules are only the part that
+   has to hold without it: the photograph is held back while the dots play, and
+   if script never starts it fades in by itself. The component switches this
+   animation off the moment it takes over. `container-type` lets it size the
+   pointer's window in `cqw`, a share of the figure's own width. */
+
+.hp {
+  container-type: inline-size;
+}
+
+@keyframes hp-fallback {
+  from {
+    opacity: 0;
+  }
+}
+
+.hp-photo {
+  animation: hp-fallback 500ms linear 3500ms both;
+}
+
+/* A project page's opening. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+.enter {
+  animation: rise 500ms var(--ease) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enter {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Site chrome stays off paper. The printable résumé has its own sheet. */
+@media print {
+  [data-noprint] {
+    display: none !important;
+  }
+}

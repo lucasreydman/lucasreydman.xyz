@@ -1,0 +1,101 @@
+/*
+  Playcaller surfaces: the few rules that are gradients, shadows or glass.
+  Every value is copied from playcaller's src/app/globals.css and
+  src/styles/glass.css, with lengths rewritten in design pixels (--px).
+*/
+
+/* .field-bg: the orange light from the top and a yard line every 64 pixels */
+.b-playcaller .pc-field {
+  background:
+    radial-gradient(120% 60% at 50% -10%, rgba(255, 91, 20, 0.1), transparent 60%),
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 calc(var(--px) * 63),
+      rgba(244, 241, 234, 0.028) calc(var(--px) * 63) calc(var(--px) * 64)
+    ),
+    #0b0c0e;
+}
+
+/* The wall behind a phone: the app's frame colour (#0d0e10) under the same light. */
+.b-playcaller .pc-ground {
+  background:
+    radial-gradient(110% 70% at 50% 0%, rgba(255, 91, 20, 0.16), transparent 68%),
+    #0d0e10;
+}
+.b-playcaller .pc-ground-low {
+  background:
+    radial-gradient(110% 70% at 50% 100%, rgba(255, 91, 20, 0.16), transparent 68%),
+    #0d0e10;
+}
+
+/* .card */
+.b-playcaller .pc-card {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, #141619 92%, transparent),
+    color-mix(in srgb, #0f1113 92%, transparent)
+  );
+  border: 1px solid #24282e;
+  box-shadow: inset 0 1px 0 rgba(244, 241, 234, 0.035);
+}
+
+/* .card.picked: a selected move */
+.b-playcaller .pc-picked {
+  border-color: color-mix(in srgb, #ff5b14 70%, #24282e);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, #ff5b14 40%, transparent),
+    0 calc(var(--px) * 10) calc(var(--px) * 30) calc(var(--px) * -18) rgba(255, 91, 20, 0.45);
+}
+
+/* .btn-signal */
+.b-playcaller .pc-signal {
+  background: linear-gradient(180deg, #ff8a3d, #ff5b14);
+  color: #1d0900;
+  box-shadow:
+    0 calc(var(--px) * 8) calc(var(--px) * 24) calc(var(--px) * -8) rgba(255, 91, 20, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* glass.css: --lg-glass with its edge, for the tab bar and the round header button */
+.b-playcaller .pc-glass {
+  background: color-mix(in srgb, #141619 58%, transparent);
+  -webkit-backdrop-filter: blur(calc(var(--px) * 10)) saturate(1.4);
+  backdrop-filter: blur(calc(var(--px) * 10)) saturate(1.4);
+  box-shadow:
+    inset 0 0 0 0.5px rgb(244 241 234 / 0.1),
+    0 calc(var(--px) * 10) calc(var(--px) * 30) calc(var(--px) * -12) rgb(0 0 0 / 0.6);
+}
+
+/* .app::after: the soft edge the content scrolls under, behind the dock */
+.b-playcaller .pc-edge {
+  background: linear-gradient(transparent, color-mix(in srgb, #0b0c0e 80%, transparent));
+}
+
+/* .pc-badge */
+.b-playcaller .pc-badge {
+  box-shadow: 0 0 0 calc(var(--px) * 2) #0b0c0e;
+}
+
+/* .shot: where a headshot sits in the app. Here it holds initials. */
+.b-playcaller .pc-shot {
+  background: linear-gradient(180deg, #242830, #1b1e22);
+}
+
+/* Glisse's slider thumb at rest */
+.b-playcaller .pc-thumb {
+  background: #f4f1ea;
+  box-shadow: 0 calc(var(--px) * 2) calc(var(--px) * 8) rgba(0, 0, 0, 0.45);
+}
+
+/* The app icon's own light, for the mark. */
+.b-playcaller .pc-icon-glow {
+  filter: drop-shadow(0 calc(var(--px) * 18) calc(var(--px) * 36) rgba(255, 91, 20, 0.32));
+}
+
+/* Where an open card runs past the edge of its tile. */
+.b-playcaller .pc-fade-down {
+  background: linear-gradient(transparent, #0b0c0e 85%);
+}
+.b-playcaller .pc-fade-up {
+  background: linear-gradient(#0b0c0e 15%, transparent);
+}
