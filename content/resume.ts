@@ -252,9 +252,9 @@ export const schoolProject = {
   period: "October 2025 to present",
   href: "https://www.psc-fsc.ca",
   detail: [
-    "Top contributor on a student team building a non-profit's bilingual conference website with Next.js and Supabase.",
+    "As Senior Developer, wrote the bulk of the code for a non-profit's bilingual conference website in Next.js and Supabase.",
     "Registration is paid through Stripe. I added its paid add-on and rebuilt the registration pages to the client's requests.",
-    "Maintainer of the protected branches: review and merge the team's merge requests, about 50 so far.",
+    "Now Development Director: I lead the student team, run version control and documentation, and review and merge its code.",
   ],
 };
 
