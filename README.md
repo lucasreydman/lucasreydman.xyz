@@ -1,6 +1,6 @@
 # lucasreydman.xyz
 
-Personal site for Lucas Reydman, live at [lucasreydman.xyz](https://lucasreydman.xyz). One page, a dark scroll-driven composition: Next.js 16, React 19, Tailwind v4, Motion, and three.js for the metal.
+Personal site for Lucas Reydman, live at [lucasreydman.xyz](https://lucasreydman.xyz). One scroll through the job, the projects and the résumé, with a page for each project and a one-page résumé sheet the PDF is printed from. Next.js 16, React 19, TypeScript and Tailwind v4.
 
 ```bash
 npm install
