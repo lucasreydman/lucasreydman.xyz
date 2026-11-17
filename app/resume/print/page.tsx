@@ -115,7 +115,7 @@ export default function ResumePrint() {
             <p className="rs-date">{education.expected}</p>
           </div>
           <p className="rs-plain">
-            {education.stats[0].value} GPA. Dean&apos;s List every term. {honors[0].what}. {languages}
+            {education.stats[0].value} GPA. Sexton Scholar and Dean&apos;s List. {honors[0].what}. {languages}
           </p>
         </section>
 

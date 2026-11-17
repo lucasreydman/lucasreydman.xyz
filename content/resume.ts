@@ -114,7 +114,7 @@ export const education = {
   note: "Applied Computer Science. Coursework across full-stack development, databases, UI and UX, security, and systems design, paired with management courses in project management, communications, and organizational leadership.",
   stats: [
     { value: "3.94", label: "cumulative GPA" },
-    { value: "6", label: "times on the Dean's List" },
+    { value: "5", label: "terms as Sexton Scholar or on the Dean's List" },
   ],
 };
 
@@ -126,9 +126,9 @@ export const education = {
 */
 export const honors: Honor[] = [
   {
-    what: "Community Leadership Scholarship",
+    what: "Entrance Community and Leadership Award",
     where: "Dalhousie University",
-    mark: "2023",
+    mark: "2024",
   },
   {
     what: "Ontario Scholar",
