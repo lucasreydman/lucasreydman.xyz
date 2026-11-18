@@ -16,7 +16,7 @@ export const profile: Profile = {
     includes internal tools that are not products in any sense a client would
     recognise, and a private coaching dashboard is not a product.
   */
-  sub: "Software developer, working in sports analytics and AI",
+  sub: "Software developer, working in analytics and AI",
 
   /*
     An overview, not a catalogue. It names no clients and no projects on purpose:
@@ -58,8 +58,12 @@ export const profile: Profile = {
       development and AI". So the headline names all three, in the order of
       what he is (a software developer), what he works on, and what he works
       with. The sub says what the AI part is in fact: he builds with agents.
+
+      Later the same day "sports" came out of the headline so it also reads
+      for someone hiring outside sport, and the sub and metadata followed. The
+      work under it is all sport, and the About text says so in full.
     */
-    headline: "Software, sports analytics and AI",
+    headline: "Software, analytics and AI",
     /*
       2026-11-17. The sub used to say "where I wrote the projection engine
       behind its rankings". Lucas: it "dumbs it down", as if that were all he
@@ -68,7 +72,7 @@ export const profile: Profile = {
       headline already says the range of the work, so the sub does not repeat
       it: it gives the job, where he is in school, and what he is looking for.
     */
-    sub: "I lead product engineering at FBI Basketball, a paid fantasy basketball platform, and I build with AI agents every day. I am in my final year of computer science at Dalhousie and looking for a role in software, sports or AI.",
+    sub: "I lead product engineering at FBI Basketball, a paid fantasy basketball platform, and I build with AI agents every day. I am in my final year of computer science at Dalhousie and looking for a role in software, analytics or AI.",
     caption: "",
   },
   /* Sits between the job and the projects, and says plainly what the projects are. */
@@ -87,7 +91,7 @@ export const profile: Profile = {
     { label: "Languages", value: "English and French" },
   ],
   contact: {
-    headline: "Looking for work in software, sports analytics and AI",
+    headline: "Looking for work in software, analytics and AI",
     body: "I graduate in 2027 and take freelance work in the meantime. If you are hiring for a role that sits between the model and the product, I would like to hear about it.",
   },
 

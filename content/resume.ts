@@ -193,7 +193,7 @@ export const languages = "Bilingual in English and French.";
   project's own page explains.
 */
 export const summary =
-  "Software developer working in sports analytics and AI. I build the models that turn box scores, betting lines and injury reports into a number, and the products that put that number in front of the person making the decision.";
+  "Software developer working in analytics and AI. I build the models that turn box scores, betting lines and injury reports into a number, and the products that put that number in front of the person making the decision.";
 
 /** `short` is the same claim cut to one line of the printed sheet. */
 export const resumeProjects: { brand: Brand; name: string; line: string; short: string }[] = [

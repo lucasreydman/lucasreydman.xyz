@@ -17,7 +17,7 @@ import { roleAnchor } from "@/lib/text";
 
 export const metadata: Metadata = {
   title: `Résumé, ${profile.name}`,
-  description: "Experience, projects, education and skills. Software developer working in sports analytics and AI.",
+  description: "Experience, projects, education and skills. Software developer working in analytics and AI.",
   alternates: { canonical: "/resume" },
 };
 
