@@ -10,7 +10,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 # lucasreydman.xyz
 
-Personal website for Lucas Reydman, a software developer looking for work in software, sports analytics and AI. Sport is the subject of most of the work, and it is not the whole pitch (Lucas, 2026-11-17: "this is about sports but also about software development and AI"): keep all three in the hero and the contact line. Live at `lucasreydman.xyz`, on the Vercel project `lucasreydman-xyz`, deployed from `main`.
+Personal website for Lucas Reydman, a software developer looking for work in software, analytics and AI. Sport is the subject of most of the work, and it is not the whole pitch (Lucas, 2026-11-17: "this is about sports but also about software development and AI"): keep all three in the hero and the contact line. The two headlines say "Software, analytics and AI" without the word "sports" so they also read for a general audience (Lucas, same day); the hero sub, the page metadata and the résumé summary use the same wording. Sport is named in the About text and shown by the work itself. Live at `lucasreydman.xyz`, on the Vercel project `lucasreydman-xyz`, deployed from `main`.
 
 ## What this site is
 

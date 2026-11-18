@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     nobody reads it, so nobody notices when it stops being true.
   */
   description:
-    "Software developer working in sports analytics and AI: projection models, betting models and fantasy tools, from the math to the product. Product engineering lead at FBI Basketball.",
+    "Software developer working in analytics and AI: projection models, betting models and fantasy tools, from the math to the product. Product engineering lead at FBI Basketball.",
   authors: [{ name: profile.name, url: siteUrl }],
   creator: profile.name,
   openGraph: {
